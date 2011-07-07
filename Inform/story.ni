@@ -8,6 +8,7 @@ Use fast route-finding.
 Use fast route-finding.
 Use MAX_INDIV_PROP_TABLE_SIZE of 500000.
 Use MAX_PROP_TABLE_SIZE of 500000.
+use MAX_STATIC_DATA of 580000.
 Use MAX_OBJ_PROP_COUNT of 128.
 Include Basic Help Menu by Emily Short.
 Include Version 4 of Menus by Emily Short.
@@ -30,6 +31,8 @@ title	description
 "Play On"	"You want to skip that ending? Go for it. Type [bold type]play on[roman type] and time will cease to be a concern. You will not get endings though."
 
 Book 1 - Variable Definitions
+
+The file of flexiblestory is called "flexible1".
 
 monster is a number that varies.
 The player has text called name.
@@ -178,6 +181,7 @@ The marea of Sewer Grating is "Mall". The sewer grating is open. The description
 Outside Trevor Labs is a room. "You[apostrophe]ve heard of Trevor Labs. They are, or is that were? a biopharm setup. Kind of new on the block, made a big stink over the local news with their willingness to skirt as close to the edge of most laws in the name of science. Well here[apostrophe]s the headquarters, rising as a sleek and tall glass building to your west. You[apostrophe]re not certain but you think you can see some light in one of the windows, visible in the [time of day] light. Curious.".
 understand "lab" or "labs" as Outside Trevor Labs.
 Outside Trevor Labs is fasttravel.
+Away from Labs is a door. "East of here lays the rest of the city." It is dangerous. The marea of Away from Labs is "Outside". Away from labs is east of Outside Trevor Labs and west of Wandering the City.
 Trevor Labs Lobby is a room. "The ground floor of Trevor Labs. New age furniture has been ripped to shreds and thrown around and unknown liquid is splattered all over the place. The smell is somewhere between burnt plastic and sweaty humanity in an unappealing mixture. Fortunately, the scent is fading with time. It's somewhat dark, but not too dark as to see the emergency stairs are still accessible going up and down.".
 West of Outside Trevor Labs is Trevor Labs Lobby.
 2F Trevor Labs is a room. "The second floor of the labs. The lighting is dim, except for brilliant light shining from beneath a closed door at the end of the hallway. It casts a cone of brightness into the gloom. The area is silent, and smells of disuse and long old disinfectant. There does not seem to be much here to look at besides a broken water cooler and a motivational poster with a kitten, encouraging you to hang in there.";
@@ -304,6 +308,9 @@ understand "seat" as chair.
 gryphon milk is a grab object. It is a part of the player. Understand "milk" as gryphon milk. Gryphon milk is infectious. The strain of gryphon milk is "Hermaphrodite Gryphon"; The trade of Gryphon Milk is "distilled milk".
 distilled milk is a grab object. It is a part of the player.
 
+Include Red Light by Hiccup.
+Include High Rise District by Batroo.
+
 The invent of the player is { "journal" };
 
 Table of Start Game
@@ -346,7 +353,7 @@ title	subtable	description	toggle
 "Your HP: [hp of player]/[maxhp of player] [name in row monster of table of random critters] HP: [monsterhp]/[hp in row monster of table of random critters]"	--	"I am fit as a fiddle"	--
 
 Table of combat items
-title	subtable	description	toggle
+title(indexed text)	subtable	description	toggle
 "Nothing"	--	"Nothing here."	combat item rule
 with 100 blank rows.
 
@@ -520,7 +527,6 @@ Include Herm Hyena for FS by Anony Mouse.
 Include Wyvern For Fs by Damaged.
 Include Stuck Dragon by Hiccup.
 Include Tanuki by Nuku Valente.
-Include Red Light by Hiccup.
 Include Cannon by Hiccup.
 Include Spidergirl For Fs by Tentacle Specialist.
 Include Mouse Taur by Nuku Valente.
@@ -536,9 +542,11 @@ Include otter by Nuku Valente.
 Include Ash Drakenoid by Sweraptor.
 Include Kangaroo by batroo.
 Include Feral Sea Dragon by Tunalord Sefont.
+Include Feral Sea Dragoness by Tunalord Sefont.
 Include Pets by Nuku Valente.
 Include sprite by Nuku Valente.
-
+Include Harpy by Nuku Valente.
+Include Cute Chinchilla Girl For FS by Trav.
 
 
 understand the command "feed" as something new.
@@ -572,12 +580,14 @@ A flag can be banned. A flag is usually not banned.
 Furry is a flag.
 Guy is a flag.
 Girl is a flag.
+Humorous is a flag.
 Hermaphrodite is a flag.
 when play begins:
-	add { "Slut Rat", "Panther Taur", "Hermaphrodite Gryphon", "Female Husky", "Latex Fox", "black equinoid", "Ashen Breeder", "lizard girl", "Skunk", "Shemale Smooth Collie", "Felinoid", "Bovine", "Feline", "Herm Hyena", "Bear", "Pit bull", "Painted Wolf Herm", "sewer gator", "doe", "sea otter", "Ash Drakenoid", "red kangaroo", "feral sea dragon", "German Shepherd"  } to infections of furry;
-	add { "Naga", "Latex Fox", "black equinoid", "skunk", "Shemale Smooth Collie", "Bovine", "Tentacle Horror", "Demon Brute", "Wyvern", "Cock Cannon", "Bear", "sea otter", "Ash Drakenoid", "feral sea dragon", "German Shepherd", "feline" } to infections of guy;
-	add { "Ashen Breeder", "Slut Rat", "Panther Taur", "Hermaphrodite Gryphon", "Parasitic Plant", "Herm Hyena", "Painted Wolf Herm", "sewer gator", "doe" } to infections of hermaphrodite;
-	add { "Drone Wasp", "Goo Girl", "Female Husky", "black equinoid", "lizard girl", "felinoid", "skunk", "sea otter", "Tentacle Horror", "spidergirl", "Mothgirl", "red kangaroo", "city sprite" } to infections of girl;
+	add { "Awesome", "Cock Cannon" } to infections of humorous;
+	add { "Slut Rat", "Panther Taur", "Hermaphrodite Gryphon", "Female Husky", "Latex Fox", "black equinoid", "Ashen Breeder", "lizard girl", "Skunk", "Shemale Smooth Collie", "Felinoid", "Bovine", "Feline", "Herm Hyena", "Bear", "Pit bull", "Painted Wolf Herm", "sewer gator", "doe", "sea otter", "Ash Drakenoid", "red kangaroo", "feral sea dragon", "German Shepherd", "Cute Chinchilla Woman", "feral sea dragoness"  } to infections of furry;
+	add { "Naga", "Latex Fox", "skunk", "Shemale Smooth Collie", "Bovine", "Tentacle Horror", "Demon Brute", "Wyvern", "Cock Cannon", "sea otter", "Ash Drakenoid", "feral sea dragon", "German Shepherd", "feline", "Felinoid" } to infections of guy;
+	add { "Ashen Breeder", "Slut Rat", "Panther Taur", "Hermaphrodite Gryphon", "Parasitic Plant", "Herm Hyena", "Painted Wolf Herm", "sewer gator", "doe", "black equinoid", "spidergirl", "Cute Chinchilla Woman", "mothgirl" } to infections of hermaphrodite;
+	add { "Drone Wasp", "Goo Girl", "Female Husky", "black equinoid", "lizard girl", "felinoid", "skunk", "sea otter", "Tentacle Horror", "Feline", "Bear", "female skunk", "spidergirl", "Mothgirl", "red kangaroo", "city sprite", "Pit bull", "feral sea dragoness", "Bovine" } to infections of girl;
 
 Part 2 - Rules
 
@@ -635,6 +645,7 @@ carry out hunting:
 	if the number of entries in q is not 0 and found is 1:
 		sort Q in random order;
 		repeat with Z running through q:
+			choose row z from the table of random critters;
 			if there is a name entry:
 				now monster is Z;
 			otherwise:
@@ -689,6 +700,46 @@ carry out hunting:
 					Fight;
 		follow the turnpass rule;
 
+to ban menu:
+	blank out the whole of table of combat items;
+	let X be 1;
+	repeat with Q running through flags:
+		choose a blank row in table of combat items;
+		now title entry is printed name of Q;
+		now description entry is printed name of Q;
+		if q is banned:
+			now title entry is "BANNED";
+		now toggle entry is flag ban rule;
+[	let z be the number of rows in table of combat items;
+	say "[Z].";]
+	if there is no title in row 1 of table of combat items:
+		say "There are no flags!";
+		wait for any key;
+	otherwise:
+		choose a blank row in table of combat items;
+		now title entry is "Begin Game";
+		now description entry is "Begin Game";
+		now toggle entry is flag ban rule;
+		change the current menu to table of Combat Items;
+		carry out the displaying activity;
+
+This is the flag ban rule:
+	choose row Current Menu Selection in table of combat items;
+	let nam be description entry;
+	if nam is "Begin Game":
+		decrease the menu depth by 1;
+		rule succeeds;
+	let z be furry;
+	repeat with y running through flags:
+		if nam matches the text printed name of y:
+			now z is y;
+			break;
+	if z is banned:
+		now z is not banned;
+	otherwise:
+		now z is banned;
+	decrease the menu depth by 1;
+	ban menu;
 
 This is the combat item rule:
 	blank out the whole of table of combat items;
@@ -930,6 +981,8 @@ Include Hyper Squirrel by Nuku Valente.
 Include Food and Water Finding by Nuku Valente.
 Include Random German Shepherd For Fs by Telanda Softpaw.
 Include Hungry Boar Man by Hiccup.
+Include Messy Pig for Fs by anonymous.
+Include Elf by Nuku Valente.
 Include Feats by Nuku Valente.
 
 to delete (X - a grab object):
@@ -1087,12 +1140,14 @@ To process (X - a grab object):
 		grow breasts by 3;
 		say "[line break]";
 	if x is infectious and "Iron Stomach" is not listed in feats of player:
+		let found be 0;
 		repeat with y running from 1 to number of rows in table of random critters:
 			choose row y in table of random critters;
 			if name entry is strain of x:
 				now monster is y;
+				now found is 1;
 				break;
-		infect;
+		if found is 1, infect;
 	if x is a journal:
 		follow the brain descr rule;
 		say "You settle down and start scribbling in your journal about your [descr]. ";
@@ -1307,16 +1362,22 @@ This is the sex change rule:
 		now cock of player is cock entry;
 		follow the cock descr rule;
 		say " Your groin throbs with intense sensations as a [descr] [cock entry] [one of]cock[or]penis[or]shaft[or]maleness[at random] erupts from you, spurting a few excited streams of fluid as it settles into place.";
-	if cunts of player is not 0 and the sex entry is "Male" and "Female Preferred" is not listed in feats of player and "One Way" is not listed in feats of player:
+	if cunts of player is not 0 and the sex entry is "Male" and "One Way" is not listed in feats of player:
 		decrease cunt length of player by 1;
 		decrease cunt length of player by cunt length of player divided by 3;
 		decrease cunt width of player by 1;
 		decrease cunt width of player by cunt width of player divided by 4;
+		if "Female Preferred" is listed in feats of player:
+			if cunt length of player is less than 4, now cunt length of player is 4;
+			if cunt width of player is less than 2, now cunt width of player is 2;
 		follow the cunt descr rule;
 		say " Strange [one of]erotic tingles[or]cold waves[or]hot flashes[at random] run over your [one of]cunt[or]pussy[or]vagina[or]cleft[at random] begins to shrink. [if cunts of player is greater than 1]They[otherwise]It[end if] dwindles in size, becoming [descr]. ";
 		if cunt length of player is less than 1 or cunt width of player is less than 1:
 			say "With a sickening noise, you cease to be female all together.";
 			now the cunts of the player is 0;
+		if cunts of the player is greater than 1 and a random chance of 1 in 3 succeeds:
+			say "An odd wet noise has you peeking in time to see one of your [one of]cunts[or]pussies[at random] have vanished!";
+			decrease cunts of player by 1;
 	if ( the sex entry is "Female" or the sex entry is "Both") and cunt length of player is less than cunt length entry and cunts of player is not 0 and "Male Preferred" is not listed in feats of player:
 		increase cunt length of player by 1;
 		increase cunt length of player by ( cunt length entry minus cunt length of player ) divided by 3;
@@ -1334,16 +1395,22 @@ This is the sex change rule:
 		increase the cunts of player by 1;
 		follow the cunt descr rule;
 		say " Your groin throbs with intense sensations as a [descr] [one of]cunt[or]pussy[or]vagina[or]cleft[at random] wetly forms, Leaking 	 along a thigh as you quiver.";
-	if cocks of player is not 0 and the sex entry is "Female" and "Male Preferred" is not listed in feats of player and "One Way" is not listed in feats of player:
+	if cocks of player is not 0 and the sex entry is "Female" and "One Way" is not listed in feats of player:
 		decrease cock length of player by 1;
 		decrease cock length of player by cock length of player divided by 3;
 		decrease cock width of player by 1;
 		decrease cock width of player by cock width of player divided by 4;
+		if "Male Preferred" is listed in feats of player:
+			if cock length of player is less than 4, now cock length of player is 4;
+			if cock width of player is less than 2, now cock width of player is 2;
 		follow the cock descr rule;
 		say " Strange [one of]erotic tingles[or]cold waves[or]hot flashes[at random] run over your [one of]cock[or]man meat[or]shaft[or]pole[at random] begins to shrink. [if cunts of player is greater than 1]They[otherwise]It[end if] dwindles in size, becoming [descr]. ";
 		if cock length of player is less than 1 or cock width of player is less than 1:
 			say "You barely have time to give a whimper as you cease to be a male.";
 			now the cocks of the player is 0;
+		if cocks of the player is greater than 1 and a random chance of 1 in 3 succeeds:
+			say "Sudden pleasure runs through one of your doomed [cock of player] cocks as it sprays the last of its seed, dwindling down to nothing at all and vanishing, leaving only the powerful orgasm to remember it by.";
+			decrease cocks of player by 1;
 
 Retaliating is an action applying to nothing.
 
@@ -1513,6 +1580,7 @@ To lose:
 	follow the breast descr rule;
 	say "[victory entry]";
 	infect;
+	if hp of player is less than 1, now hp of player is 1;
 	increase the XP of the player by lev entry divided by two;
 	decrease the score by 1;
 	decrease the morale of the player by 3;
@@ -1817,6 +1885,8 @@ check exploring:
 	if location of player is not fasttravel, say "You can not explore from here." instead;
 
 carry out exploring:
+	let l be a random visible dangerous door;
+	if l is not nothing, now battleground is the marea of l;
 	follow the explore rule;
 
 This is the turnpass rule:
@@ -2284,10 +2354,11 @@ When play begins:
 	say "Want more details on the game and updates? ----- [bold type]http://nukuv.blogspot.com/[roman type]  ------";
 	say "[line break]Would you like to select types of creatures to NOT appear in the game?";
 	if the player consents:
-		repeat with n running through flags:
+		ban menu;
+[		repeat with n running through flags:
 			say "Would you like to ban [N] flagged creatures from the game?";
 			if the player consents:
-				now n is banned;
+				now n is banned;]
 	repeat through the table of random critters:
 		let bad be 0;
 		repeat with n running through all banned flags:
@@ -2330,23 +2401,47 @@ This is the finish stats rule:
 		decrease menu depth by 1;
 		rule succeeds;
 	if Current menu selection is 1:
-		increase strength of player by 5;
 		say "Your strength is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase strength of player by 5;
+		otherwise:
+			rule fails;
 	if Current menu selection is 2:
-		increase dexterity of player by 5;
 		say "Your dexterity is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase dexterity of player by 5;
+		otherwise:
+			rule fails;
 	if Current menu selection is 3:
-		increase Stamina of player by 5;
-		say "Your Stamina is your specialty.";
+		say "Your stamina is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase stamina of player by 5;
+		otherwise:
+			rule fails;
 	if Current menu selection is 4:
-		increase charisma of player by 5;
 		say "Your charisma is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase charisma of player by 5;
+		otherwise:
+			rule fails;
 	if Current menu selection is 5:
-		increase perception of player by 5;
 		say "Your perception is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase perception of player by 5;
+		otherwise:
+			rule fails;
 	if Current menu selection is 6:
-		increase intelligence of player by 5;
 		say "Your intelligence is your specialty.";
+		say "Are you sure?";
+		if the player consents:
+			increase intelligence of player by 5;
+		otherwise:
+			rule fails;
 	now started is 1;
 	say "You have decided your physical talents, but are you a man or a woman?";
 	wait for any key;
@@ -2412,6 +2507,25 @@ carry out levelcheat:
 	
 Book 7 - Endings
 
+vetcheat is an action applying to nothing.
+understand "i am a pro" as vetcheat.
+
+vetcheater is a number that varies.
+carry out vetcheat:
+	if vetcheater is not 0: 
+		say "You can only use this once.";
+		stop the action;
+	increase vetcheater by 1;
+	increase xp of player by 200;
+	if level of player is less than 5:
+		level up;
+		level up;
+		level up;
+		level up;
+		level up;
+	decrease score by 400;
+	
+
 When play ends:
 	follow the self examine rule;
 	if hp of player is less than 1:
@@ -2435,6 +2549,8 @@ When play ends:
 		say "Grand Scholar";
 	otherwise:
 		say "Ultimate Master";
+	if the score is greater than 999:
+		say "Your performance was so excellent, we'll give you a little... help, for your next run through. Type 'I am a pro' to gain 200 XP. It only works once per character.";
 	say "[line break]";
 	if the score is greater than 9000:
 		say "What, 9000?!";
@@ -2467,7 +2583,7 @@ When play ends:
 		say "You emerge from your harrowing experience with your mind intact, with your [bodyname of player] form and [facename of player] face.";
 		if bodyname is "Human":
 			say "Despite the traumas set on you, you do your best to fit back in with humanity after the rescue arrives.";
-		if cock length of player is greater than 10 or cock width of player is greater than 6:
+		if cock length of player is greater than 10 or cock width of player is greater than 6 and cocks of player is greater than 0:
 			say "Your extreme masculine attributes prove to be more than a little awkward. As society puts itself back together, you do find a niche. Others, changed as you, require the services of such studs, and you never lack for something to do on the weekends.";
 			if cocks of player is greater than 1:
 				say "Your multiple endowments become quite popular amongst some infected, whom come from some great distance to be serviced by you. Though it is illegal to charge for such services, many leave you a 'gift' regardless, even a marriage proposal or two.";
